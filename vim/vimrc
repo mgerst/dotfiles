@@ -28,6 +28,11 @@ Plug 'scrooloose/syntastic'
 Plug 'editorconfig/editorconfig-vim'
 " }}}
 
+" ColorSchemes {{{
+Plug 'sickill/vim-monokai'
+Plug 'tomasr/molokai'
+" }}}
+
 " Filetype plugins {{{
 Plug 'fatih/vim-go'
 Plug 'plasticboy/vim-markdown' | Plug 'godlygeek/tabular'
@@ -154,7 +159,7 @@ endif
 " Color scheme {{{
 
 syntax on
-set background=dark
+colorscheme molokai
 
 " Highlight vcs conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}}\([^=].\+\)\?$'
