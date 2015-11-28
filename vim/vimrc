@@ -159,6 +159,7 @@ endif
 " Color scheme {{{
 
 syntax on
+colorscheme monokai
 colorscheme molokai
 
 " Highlight vcs conflict markers
