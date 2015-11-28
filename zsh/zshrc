@@ -49,7 +49,7 @@ ZSH_THEME="steeef"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git virtualenv virtualenvwrapper)
+plugins=(tmux git virtualenv virtualenvwrapper)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
@@ -60,4 +60,8 @@ export EDITOR='vim'
 
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
+fi
+
+if [ -f "$HOME/.Xmodmap" ]; then
+    xmodmap ~/.Xmodmap
 fi

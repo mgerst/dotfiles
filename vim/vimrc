@@ -17,6 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'wincent/command-t'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'bling/vim-airline'
 
 " Autocomplete/Syntax {{{
 Plug 'valloric/YouCompleteMe'
@@ -429,6 +430,9 @@ augroup END
 
 " }}}
 " Plugin settings ----------------------------------- {{{
+" Airline {{{
+let g:airline#extensions#tabline#enabled = 1
+" }}}
 " Command-T {{{
 
 nnoremap <leader>o <esc>:CommandT<cr>
