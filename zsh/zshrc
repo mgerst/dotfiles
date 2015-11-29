@@ -65,3 +65,9 @@ fi
 if [ -f "$HOME/.Xmodmap" ]; then
     xmodmap ~/.Xmodmap
 fi
+
+if [[ "$TERM" == "xterm-termite" ]]; then
+    export TERM="xterm"
+fi
+
+alias tmux="tmux -2"
