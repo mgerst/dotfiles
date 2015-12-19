@@ -41,6 +41,8 @@ Plug 'plasticboy/vim-markdown' | Plug 'godlygeek/tabular'
 
 Plug 'mhinz/vim-rfc'
 Plug 'vim-scripts/rfc-syntax'
+
+Plug 'saltstack/salt-vim'
 " }}}
 
 call plug#end()
