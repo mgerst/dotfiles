@@ -70,4 +70,6 @@ if [[ "$TERM" == "xterm-termite" ]]; then
     export TERM="xterm"
 fi
 
+export TERM="xterm"
+
 alias tmux="tmux -2"
