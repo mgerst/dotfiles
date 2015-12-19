@@ -358,7 +358,7 @@ augroup ft_markdown
 
     " Use <localleader>1/2/3 to add headings
     au FileType markdown nnoremap <buffer> <localleader>1 yypVr=:redraw<cr>
-    au FileType markdown nnoremap <buffer> <localleader>2 yypVr-:redraw,cr>
+    au FileType markdown nnoremap <buffer> <localleader>2 yypVr-:redraw<cr>
     au FileType markdown nnoremap <buffer> <localleader>3 mzI###<space><esc>`zllll
     au FileType markdown nnoremap <buffer> <localleader>4 mzI####<space><esc>`zlllll
 augroup END
@@ -433,6 +433,9 @@ augroup END
 " Plugin settings ----------------------------------- {{{
 " Airline {{{
 let g:airline#extensions#tabline#enabled = 1
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 " }}}
 " Command-T {{{
 
@@ -514,6 +517,7 @@ let g:EasyMotion_startofline = 0
 
 let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
+let g:markdown_fenced_languages = ['cpp', 'c']
 
 " }}}
 " vim-go {{{
@@ -539,7 +543,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-let g:go_fmt_command = "goimportss"
+let g:go_fmt_command = "goimports"
 " }}}
 " Syntastic {{{
 let g:syntastic_always_populate_loc_list = 1
