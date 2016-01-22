@@ -73,3 +73,5 @@ fi
 export TERM="xterm"
 
 alias tmux="tmux -2"
+
+export MTR_OPTIONS=-t
