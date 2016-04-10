@@ -43,6 +43,8 @@ Plug 'mhinz/vim-rfc'
 Plug 'vim-scripts/rfc-syntax'
 
 Plug 'saltstack/salt-vim'
+
+Plug 'rust-lang/rust.vim'
 " }}}
 
 call plug#end()
