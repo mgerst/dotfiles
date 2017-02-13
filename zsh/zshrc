@@ -88,3 +88,9 @@ fi
 if [ -n "$TMUX" ]; then
     export TERM="screen-256color"
 fi
+
+ansiblerole() {
+    mkdir -p roles/$1/{defaults,files,handlers,meta,tasks,templates,vars}
+}
+
+export ANSIBLE_NOCOWS=1
