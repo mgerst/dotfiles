@@ -62,6 +62,10 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+if [ -d "$HOME/.npm-global/bin" ]; then
+    PATH="$HOME/.npm-global/bin:$PATH"
+fi
+
 if [ -f "$HOME/.Xmodmap" ]; then
     xmodmap ~/.Xmodmap
 fi
@@ -94,3 +98,4 @@ ansiblerole() {
 }
 
 export ANSIBLE_NOCOWS=1
+synclient TapButton3=2 TapButton2=3 TapButton1=0
