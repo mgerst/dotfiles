@@ -20,6 +20,11 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'bling/vim-airline'
 
+" Tests/Task Runners {{{
+Plug 'tpope/vim-dispatch'
+Plug 'janko-m/vim-test'
+" }}}
+
 " Autocomplete/Syntax {{{
 Plug 'valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
@@ -137,7 +142,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set wrap
-set textwidth=80
+set textwidth=120
 set formatoptions=qrnlj
 
 " }}}
@@ -502,6 +507,14 @@ nnoremap <silent> <leader><tab> :ScratchToggle<cr>
 let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<cr>
 
+" }}}
+" Test {{{
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+
+let test#strategy = 'dispatch'
+let test#python#runner = 'pytest'
 " }}}
 " EasyMotion {{{
 
