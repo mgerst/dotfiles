@@ -101,3 +101,7 @@ ansiblerole() {
 
 export ANSIBLE_NOCOWS=1
 synclient TapButton3=2 TapButton2=3 TapButton1=0
+
+if [ -d "/opt/metasploit-framework/bin" ]; then
+    export PATH="/opt/metasploit-framework/bin:$PATH"
+fi
