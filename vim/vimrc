@@ -50,6 +50,8 @@ Plug 'vim-scripts/rfc-syntax'
 Plug 'saltstack/salt-vim'
 
 Plug 'rust-lang/rust.vim'
+
+Plug 'leafgarland/typescript-vim'
 " }}}
 
 call plug#end()
