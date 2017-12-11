@@ -39,6 +39,10 @@ call dein#add('neomake/neomake')
 " Autocomplete
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim')
+call dein#add('zchee/deoplete-jedi')
+call dein#add('zchee/deoplete-go')
+call dein#add('carlitux/deoplete-ternjs')
+call dein#add('mhartington/deoplete-typescript')
 
 " Fuzzy Finder
 call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 })
@@ -265,7 +269,6 @@ augroup ft_asm
     "au FileType asm setlocal noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
 augroup END
 " }}}
-
 " C {{{
 augroup ft_c
     au!
@@ -274,7 +277,6 @@ augroup ft_c
     " generate header guards
     au FileType c <localleader>h I#ifndef <ESC>yyPP2gglcwdefine<ESC>jHlcwendif //<ESC>20<esc>
 " }}}
-
 " C++ {{{
 augroup ft_cpp
     au!
@@ -284,7 +286,27 @@ augroup ft_cpp
     au FileType cpp <localleader>h I#ifndef <ESC>yyPP2gglcwdefine<ESC>jHlcwendif //<ESC>20<esc>
 augroup END
 " }}}
+" Javascript {{{
+function! NeomakeESlintChecker()
+    let l:npm_bin = ''
+    let l:eslint = 'eslint'
 
+    if executable('npm')
+        let l:npm_bin = split(system('npm bin'), '\n')[0]
+    endif
+
+    if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+        let l:eslint = l:npm_bin . '/eslint'
+    endif
+
+    let b:neomake_javascript_eslint_exe = l:eslint
+endfunction
+
+augroup ft_js
+    au!
+    autocmd FileType javascript :call NeomakeESlintChecker()
+augroup END
+" }}}
 " Vim {{{
 augroup ft_vim
     au!
@@ -307,15 +329,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 " }}}
-
 " Deoplete {{{
 let g:deoplete#enable_at_startup = 1
 " }}}
-
 " Devicons & NERDTree syntax {{{
 let g:webdevicons_enable_nerdtree = 1
 " }}}
-
 " EasyMotion {{{
 
 " Replace search
@@ -329,19 +348,16 @@ map <leader>k <Plug>(easymotion-k)
 
 let g:EasyMotion_startofline = 0
 " }}}
-
 " FZF {{{
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 map <c-p> :FZF<cr>
 tmap <c-p> <c-\><c-n>:FZF<cr>
 map <leader>l :Lines<cr>
 " }}}
-
 " Indentline {{{
 let g:indentLine_char = '│'
 let g:indentLine_color_dark = 1
 " }}}
-
 " Neomake {{{
 " When writing a buffer
 function! MyOnBattery()
@@ -359,15 +375,7 @@ else
 endif
 
 let g:neomake_open_list=2
-
-" NPM Stuff {{{
-if findfile('.eslintrc', '.;') !=# ''
-    let g:neomake_javascript_eslint_exe = $PWD . '/node_modules/.bin/eslint'
-endif
 " }}}
-
-" }}}
-
 " NERDTree {{{
 nnoremap <silent> <F2> :NERDTreeToggle<cr>
 " }}}
