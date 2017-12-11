@@ -39,12 +39,13 @@ call dein#add('neomake/neomake')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim')
 
-" Need to figure out the fonts for this
-"call dein#add('ryanoasis/vim-devicons')
-
 " Fuzzy Finder
 call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 })
 call dein#add('junegunn/fzf.vim')
+
+" Need to figure out the fonts for this
+call dein#add('ryanoasis/vim-devicons')
+call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 
 " Ensure plugins installed
 if dein#check_install()
@@ -308,6 +309,10 @@ let g:airline_right_sep = ''
 
 " Deoplete {{{
 let g:deoplete#enable_at_startup = 1
+" }}}
+
+" Devicons & NERDTree syntax {{{
+let g:webdevicons_enable_nerdtree = 1
 " }}}
 
 " EasyMotion {{{
