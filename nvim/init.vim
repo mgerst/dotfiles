@@ -16,6 +16,7 @@ call dein#add('Shougo/unite.vim')
 
 " colorscheme & syntax highlighting
 call dein#add('mhartington/oceanic-next')
+call dein#add('blueshirts/darcula')
 call dein#add('Yggdroot/indentLine')
 call dein#add('Raimondi/delimitMate')
 call dein#add('valloric/MatchTagAlways')
@@ -146,7 +147,7 @@ endif
 
 " Color scheme {{{
 syntax on
-colorscheme OceanicNext
+colorscheme darcula
 
 " Highlight vcs conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}}\([^=].\+\)\?$'
@@ -336,6 +337,11 @@ tmap <c-p> <c-\><c-n>:FZF<cr>
 map <leader>l :Lines<cr>
 " }}}
 
+" Indentline {{{
+let g:indentLine_char = '│'
+let g:indentLine_color_dark = 1
+" }}}
+
 " Neomake {{{
 " When writing a buffer
 function! MyOnBattery()
@@ -351,6 +357,15 @@ if MyOnBattery()
 else
     call neomake#configure#automake('nw', 250)
 endif
+
+let g:neomake_open_list=2
+
+" NPM Stuff {{{
+if findfile('.eslintrc', '.;') !=# ''
+    let g:neomake_javascript_eslint_exe = $PWD . '/node_modules/.bin/eslint'
+endif
+" }}}
+
 " }}}
 
 " NERDTree {{{
