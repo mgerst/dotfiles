@@ -45,6 +45,8 @@ Plug 'vim-scripts/rfc-syntax'
 Plug 'saltstack/salt-vim'
 
 Plug 'rust-lang/rust.vim'
+
+Plug 'cespare/vim-toml'
 " }}}
 
 call plug#end()
