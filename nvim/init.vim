@@ -304,7 +304,7 @@ endfunction
 
 augroup ft_js
     au!
-    autocmd FileType javascript :call NeomakeESlintChecker()
+    autocmd FileType javascript,vue :call NeomakeESlintChecker()
 augroup END
 " }}}
 " Vim {{{
@@ -331,6 +331,13 @@ let g:airline_right_sep = ''
 " }}}
 " Deoplete {{{
 let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+autocmd! InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " }}}
 " Devicons & NERDTree syntax {{{
 let g:webdevicons_enable_nerdtree = 1
