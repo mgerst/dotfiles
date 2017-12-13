@@ -307,6 +307,12 @@ augroup ft_js
     autocmd FileType javascript,vue :call NeomakeESlintChecker()
 augroup END
 " }}}
+" Makefile {{{
+augroup ft_makefile
+    au!
+    autocmd FileType make :setlocal noexpandtab
+augroup END
+" }}}
 " Vim {{{
 augroup ft_vim
     au!
