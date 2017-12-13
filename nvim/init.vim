@@ -41,6 +41,7 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neco-vim')
 call dein#add('zchee/deoplete-jedi')
 call dein#add('zchee/deoplete-go')
+call dein#add('zchee/deoplete-clang')
 call dein#add('carlitux/deoplete-ternjs')
 call dein#add('mhartington/deoplete-typescript')
 
