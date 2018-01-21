@@ -347,6 +347,9 @@ autocmd! InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8.1/include/'
 " }}}
 " Devicons & NERDTree syntax {{{
 let g:webdevicons_enable_nerdtree = 1
