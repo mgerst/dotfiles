@@ -120,3 +120,8 @@ synclient TapButton3=2 TapButton2=3 TapButton1=0
 if [ -d "/opt/metasploit-framework/bin" ]; then
     export PATH="/opt/metasploit-framework/bin:$PATH"
 fi
+
+if [ -d $HOME/.rvm/bin ]; then
+    # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+    export PATH="$PATH:$HOME/.rvm/bin"
+fi

@@ -60,6 +60,8 @@ if dein#check_install()
 endif
 
 call dein#end()
+
+filetype plugin indent on
 " ------------------------------------------------------------------------------ }}}
 " Basic Options ---------------------------------------------------------------- {{{
 
@@ -267,7 +269,7 @@ set foldtext=MyFoldText()
 " Assembly {{{
 augroup ft_asm
     au!
-    "au FileType asm setlocal noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
+    au FileType asm setlocal noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
 augroup END
 " }}}
 " C {{{
@@ -276,7 +278,7 @@ augroup ft_c
     " au FileType c setlocal foldmethod=marker foldmarker={,}
 
     " generate header guards
-    au FileType c <localleader>h I#ifndef <ESC>yyPP2gglcwdefine<ESC>jHlcwendif //<ESC>20<esc>
+    " au FileType c <localleader>h I#ifndef <ESC>yyPP2gglcwdefine<ESC>jHlcwendif //<ESC>20<esc>
 " }}}
 " C++ {{{
 augroup ft_cpp
@@ -284,7 +286,7 @@ augroup ft_cpp
     " au FileType cpp setlocal foldmethod=marker foldmarker={,}
 
     " Generate header guards
-    au FileType cpp <localleader>h I#ifndef <ESC>yyPP2gglcwdefine<ESC>jHlcwendif //<ESC>20<esc>
+    " au FileType cpp <localleader>h I#ifndef <ESC>yyPP2gglcwdefine<ESC>jHlcwendif //<ESC>20<esc>
 augroup END
 " }}}
 " Javascript {{{
