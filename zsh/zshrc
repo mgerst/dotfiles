@@ -125,3 +125,9 @@ if [ -d $HOME/.rvm/bin ]; then
     # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
     export PATH="$PATH:$HOME/.rvm/bin"
 fi
+
+if [ -d $HOME/.pyenv ]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
