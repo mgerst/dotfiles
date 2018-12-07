@@ -51,7 +51,7 @@ ZSH_TMUX_FIXTERM=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git virtualenv virtualenvwrapper iseage)
+plugins=(tmux git virtualenv virtualenvwrapper iseage zsh-syntax-highlighting zsh-autosuggestions)
 
 capability() {
     grep $1 ~/.capabilities
@@ -70,10 +70,6 @@ fi
 
 if [ -d "$HOME/.npm-global/bin" ]; then
     PATH="$HOME/.npm-global/bin:$PATH"
-fi
-
-if [ -f "$HOME/.Xmodmap" ]; then
-    xmodmap ~/.Xmodmap
 fi
 
 if [[ "$TERM" == "xterm-termite" ]]; then
@@ -138,3 +134,23 @@ if [ -d $HOME/.pyenv ]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+
+python3 -c 'import ara' > /dev/null 2>&1
+if [[ "$?" -eq "0" ]]; then
+    export ANSIBLE_CALLBACK_PrailsLUGINS="$(python3 -c 'import os,ara; print(os.path.dirname(ara.__file__))')/plugins/callbacks"
+fi
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+alias dnsdeploy='cd ~/dns; ansible-playbook -i hosts playbook.yml --ask-become-pass; cd -'
+
+fbr() {
+    local branches branch
+    branches=$(git branch --all | grep -v HEAD) &&
+    branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/matt2/bin/vault vault
+bindkey '^ ' autosuggest-accept
