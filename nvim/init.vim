@@ -21,6 +21,8 @@ call dein#add('Yggdroot/indentLine')
 call dein#add('Raimondi/delimitMate')
 call dein#add('valloric/MatchTagAlways')
 call dein#add('sheerun/vim-polyglot')
+call dein#add('fatih/vim-go')
+
 " Git helpers
 call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter')
@@ -44,6 +46,13 @@ call dein#add('zchee/deoplete-go')
 call dein#add('zchee/deoplete-clang')
 call dein#add('carlitux/deoplete-ternjs')
 call dein#add('mhartington/deoplete-typescript')
+
+" Language Server Stuff
+call dein#add('autozimu/LanguageClient-neovim', {
+    \ 'rev': 'next',
+    \ 'build': 'bash install.sh',
+    \ })
+call dein#add('Shougo/echodoc.vim')
 
 " Fuzzy Finder
 call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 })
@@ -87,6 +96,7 @@ set shiftround
 set title
 set linebreak
 set colorcolumn=+1
+set signcolumn=yes
 set fillchars=diff:⣿,vert:│
 
 " Don't try to highlight lines longer than 800 characters
@@ -289,6 +299,20 @@ augroup ft_cpp
     " au FileType cpp <localleader>h I#ifndef <ESC>yyPP2gglcwdefine<ESC>jHlcwendif //<ESC>20<esc>
 augroup END
 " }}}
+" Go {{{
+augroup ft_go
+    au!
+    au FileType go setlocal nolist
+augroup END
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_fmt_command = "goimports"
+" }}}
 " Javascript {{{
 function! NeomakeESlintChecker()
     let l:npm_bin = ''
@@ -350,6 +374,10 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8.1/include/'
+
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
 " }}}
 " Devicons & NERDTree syntax {{{
 let g:webdevicons_enable_nerdtree = 1
@@ -376,6 +404,17 @@ map <leader>l :Lines<cr>
 " Indentline {{{
 let g:indentLine_char = '│'
 let g:indentLine_color_dark = 1
+" }}}
+" Language Server Client {{{
+let g:LanguageClient_serverCommands = {
+            \ 'python': ['pyls'],
+            \ 'ruby': ['solargraph', 'socket'],
+            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ }
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " }}}
 " Neomake {{{
 " When writing a buffer

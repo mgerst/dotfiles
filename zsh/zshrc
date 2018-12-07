@@ -129,6 +129,11 @@ if [ -d $HOME/.rvm/bin ]; then
     export PATH="$PATH:$HOME/.rvm/bin"
 fi
 
+# Some systems have rbenv instead of rvm
+if [ -d $HOME/.rbenv/bin ]; then
+    export PATH="$PATH:$HOME/.rbenv/bin"
+fi
+
 if [ -d $HOME/.pyenv ]; then
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init -)"
@@ -154,3 +159,13 @@ fbr() {
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/matt2/bin/vault vault
 bindkey '^ ' autosuggest-accept
+
+PATH="/home/mattg/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/mattg/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/mattg/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/mattg/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/mattg/perl5"; export PERL_MM_OPT;
+
+if [ -d $HOME/.cargo ]; then
+    export PATH=$HOME/.cargo/bin:$PATH
+fi
