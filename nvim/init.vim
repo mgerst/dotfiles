@@ -22,6 +22,7 @@ call dein#add('Raimondi/delimitMate')
 call dein#add('valloric/MatchTagAlways')
 call dein#add('sheerun/vim-polyglot')
 call dein#add('fatih/vim-go')
+call dein#add('tpope/vim-rails')
 
 " Git helpers
 call dein#add('tpope/vim-fugitive')
