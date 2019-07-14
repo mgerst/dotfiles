@@ -51,127 +51,27 @@ ZSH_TMUX_FIXTERM=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git virtualenv virtualenvwrapper iseage zsh-syntax-highlighting zsh-autosuggestions)
-
-capability() {
-    grep $1 ~/.capabilities
-}
+plugins=(tmux git virtualenv zsh-syntax-highlighting zsh-autosuggestions rvm)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vim'
-
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/.npm-global/bin" ]; then
-    PATH="$HOME/.npm-global/bin:$PATH"
-fi
-
-if [[ "$TERM" == "xterm-termite" ]]; then
-    export TERM="xterm"
-fi
-
-#export TERM="xterm-256color"
-
-#alias tmux="tmux -2"
-
-export MTR_OPTIONS=-t
-
-if [ -f "$HOME/.dircolors" ]; then
-    eval `dircolors $HOME/.dircolors`
-fi
-
-if [ -d "$HOME/projects/go" ]; then
-    export GOPATH="$HOME/projects/go"
-    export PATH="$GOPATH/bin:$PATH"
-fi
-
-if [ -n "$TMUX" ]; then
-    export TERM="screen-256color"
-fi
-
-export GPG_TTY=$(tty)
-if [[ -n "$SSH_CONNECTION" ]] ;then
-    export PINENTRY_USER_DATA="USE_CURSES=1"
-fi
-
-if [[ -n "$VIRTUAL_ENV" ]]; then
-    source $VIRTUAL_ENV/bin/activate
-fi
-
-if [[ -d "$HOME/.local/bin" ]]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-ansiblerole() {
-    mkdir -p roles/$1/{defaults,files,handlers,meta,tasks,templates,vars}
-}
-
-export ANSIBLE_NOCOWS=1
-
-if capability touchpad; then
-    synclient TapButton3=2 TapButton2=3 TapButton1=0
-fi
-
 if [ -d "/opt/metasploit-framework/bin" ]; then
     export PATH="/opt/metasploit-framework/bin:$PATH"
 fi
 
-if [ -d $HOME/.rvm/bin ]; then
-    # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-    export PATH="$PATH:$HOME/.rvm/bin"
+# Split config (should be checked in to VCS)
+if [ -d $HOME/.zshrc.d ]; then
+    for file in $HOME/.zshrc.d/*.zsh; do
+        source $file
+    done
 fi
 
-# Some systems have rbenv instead of rvm
-if [ -d $HOME/.rbenv/bin ]; then
-    export PATH="$PATH:$HOME/.rbenv/bin"
+# Machind specific config (should not be in VCS)
+if [ -d $HOME/.zshrc.custom.d ]; then
+    for file in $HOME/.zshrc.custom.d/*.zsh; do
+        source $file
+    done
 fi
-
-if [ -d $HOME/.pyenv ]; then
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-python3 -c 'import ara' > /dev/null 2>&1
-if [[ "$?" -eq "0" ]]; then
-    export ANSIBLE_CALLBACK_PrailsLUGINS="$(python3 -c 'import os,ara; print(os.path.dirname(ara.__file__))')/plugins/callbacks"
-fi
-
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-alias dnsdeploy='cd ~/dns; ansible-playbook -i hosts playbook.yml --ask-become-pass; cd -'
-
-fbr() {
-    local branches branch
-    branches=$(git branch --all | grep -v HEAD) &&
-    branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/matt2/bin/vault vault
-bindkey '^ ' autosuggest-accept
-
-PATH="/home/mattg/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/mattg/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/mattg/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/mattg/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/mattg/perl5"; export PERL_MM_OPT;
-
-if [ -d $HOME/.cargo ]; then
-    export PATH=$HOME/.cargo/bin:$PATH
-fi
-
-export PATH="$PATH:/opt/mssql-tools/bin"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm zsh_completion
