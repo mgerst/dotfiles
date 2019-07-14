@@ -11,3 +11,14 @@ if [ -d $HOME/.rbenv/bin ]; then
 fi
 
 alias rt="rails test"
+alias rts="rails test:system"
+alias rta="rails test test:system"
+alias rs="rspec"
+
+oms() {
+    if [ -f Procfile.dev ]; then
+        overmind start -f Procfile.dev
+    else
+        overmind start
+    fi
+}
