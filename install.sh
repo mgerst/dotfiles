@@ -32,6 +32,10 @@ else
     echo "[WRN] Could not find zsh, skipping"
 fi
 
+if [ !-f $HOME/.capabilities ]; then
+    touch $HOME/.capabilities
+fi
+
 # VIM Configuration
 if check_executable vim; then
     check_link vim/vimrc .vimrc
