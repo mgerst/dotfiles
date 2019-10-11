@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 # Symlinks my dotfiles into the correct place
 function check_link() {
     if [ ! -e $HOME/$2 ]; then
@@ -32,7 +33,7 @@ else
     echo "[WRN] Could not find zsh, skipping"
 fi
 
-if [ !-f $HOME/.capabilities ]; then
+if [ ! -f $HOME/.capabilities ]; then
     touch $HOME/.capabilities
 fi
 
@@ -71,7 +72,6 @@ fi
 
 # Awesome Configuration
 if check_executable awesome; then
-    check_directory .config/awesome
     check_link awesome .config/awesome
 else
     echo "[WRN] Could not find awesomewm, skipping"
