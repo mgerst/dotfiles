@@ -15,10 +15,28 @@ alias rts="rails test:system"
 alias rta="rails test test:system"
 alias rs="rspec"
 
-oms() {
+function oms() {
     if [ -f Procfile.dev ]; then
         overmind start -f Procfile.dev
     else
         overmind start
     fi
 }
+
+function knit() {
+    if [ -f Gemfile ]; then
+        bundle
+    fi
+
+    if [ -f yarn.lock ]; then
+        yarn
+    elif [ -f package-lock.json ]; then
+        npm install
+    fi
+
+    if [ -f .overmind ]; then
+        overmind restart
+    fi
+}
+
+export HEADLESS_TESTS=true

@@ -7,3 +7,7 @@ if [ -d $HOME/.pyenv ]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+
+if [ -d $HOME/Library/Python/3.7/bin ]; then
+    export PATH="$PATH:$HOME/Library/Python/3.7/bin"
+fi
