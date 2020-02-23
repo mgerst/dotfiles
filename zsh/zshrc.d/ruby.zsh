@@ -1,3 +1,6 @@
+# Run system tests headless
+export HEADLESS_TESTS=true
+
 # Configure rvm
 if [ -d $HOME/.rvm/bin ]; then
     # Add RVM to PATH for scripting. Make sure this is the
@@ -34,9 +37,25 @@ function knit() {
         npm install
     fi
 
+    redis-cli flushall
+
     if [ -f .overmind ]; then
         overmind restart
     fi
 }
 
-export HEADLESS_TESTS=true
+function rss() {
+    if [ -f .overmind ]; then
+        overmind stop web worker
+    fi
+
+    if [ -f db/schema.rb ]; then
+        rails db:schema:load db:seed
+    else
+        rails db:drop db:create db:structure:load db:seed
+    fi
+
+    if [ -f .overmind ]; then
+        overmind restart web worker
+    fi
+}
