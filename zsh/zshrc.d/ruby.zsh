@@ -55,7 +55,7 @@ function rss() {
         rails db:drop db:create db:structure:load db:seed
     fi
 
-    if [ -f .overmind ]; then
+    if [ -f .overmind.sock ]; then
         overmind restart web worker
     fi
 }
