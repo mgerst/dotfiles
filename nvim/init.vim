@@ -23,6 +23,9 @@ call dein#add('valloric/MatchTagAlways')
 call dein#add('sheerun/vim-polyglot')
 call dein#add('fatih/vim-go')
 call dein#add('tpope/vim-rails')
+call dein#add('Keithbsmiley/rspec.vim')
+call dein#add('sunaku/vim-ruby-minitest')
+call dein#add('hashivim/vim-terraform')
 
 " Git helpers
 call dein#add('tpope/vim-fugitive')
@@ -39,16 +42,23 @@ call dein#add('Lokaltog/vim-easymotion')
 
 call dein#add('neomake/neomake')
 
+call dein#add('w0rp/ale')
+
+call dein#add('kshenoy/vim-signature')
+
 " Autocomplete
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('Shougo/neco-vim')
-call dein#add('zchee/deoplete-jedi')
-call dein#add('zchee/deoplete-go')
-call dein#add('zchee/deoplete-clang')
-call dein#add('carlitux/deoplete-ternjs')
-call dein#add('mhartington/deoplete-typescript')
+" call dein#add('Shougo/deoplete.nvim')
+" call dein#add('Shougo/neco-vim')
+" call dein#add('zchee/deoplete-jedi')
+" call dein#add('zchee/deoplete-go')
+" call dein#add('zchee/deoplete-clang')
+" call dein#add('carlitux/deoplete-ternjs')
+" call dein#add('mhartington/deoplete-typescript')
 
 " Language Server Stuff
+call dein#add('neoclide/coc.nvim', {
+    \ 'build': 'yarn'
+    \})
 call dein#add('autozimu/LanguageClient-neovim', {
     \ 'rev': 'next',
     \ 'build': 'bash install.sh',
@@ -372,13 +382,13 @@ autocmd! InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
-let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8.1/include/'
-
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
+"
+" let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
+" let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8.1/include/'
+"
+" call deoplete#custom#source('LanguageClient',
+"             \ 'min_pattern_length',
+"             \ 2)
 " }}}
 " Devicons & NERDTree syntax {{{
 let g:webdevicons_enable_nerdtree = 1
