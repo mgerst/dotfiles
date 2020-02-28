@@ -46,6 +46,7 @@ local globalKeys =
       awful.spawn("gnome-system-monitor")
     end,
     { description = "Open system monitor", group = "launcher"}),
+  awful.key({modkey}, "o", awful.client.movetoscreen, { description = "Move to another screen", group = "client" }),
 
 
   -- Screen Shots
