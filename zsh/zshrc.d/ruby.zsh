@@ -39,7 +39,7 @@ function knit() {
 
     redis-cli flushall
 
-    if [ -f .overmind ]; then
+    if [ -S .overmind.sock ]; then
         overmind restart
     fi
 }

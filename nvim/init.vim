@@ -255,6 +255,12 @@ nnoremap <c-l> <c-w>l
 
 nnoremap <leader>v <c-w>v
 
+" Moving lines around
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 " ------------------------------------------------------------------------------ }}}
 " Folding----------------------------------------------------------------------- {{{
 
@@ -362,6 +368,17 @@ augroup ft_vim
 
     au BufWritePost $MYVIMRC source %
 augroup END
+" }}}
+" Ruby {{{
+augroup ft_ruby
+    au!
+
+    au FileType vim setlocal foldmethod=syntax
+    au FileType vim setlocal foldlevel=99
+augroup END
+" }}}
+" Python {{{
+let g:python_highlight_all = 1
 " }}}
 
 " ------------------------------------------------------------------------------ }}}

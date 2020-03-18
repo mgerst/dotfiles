@@ -54,8 +54,6 @@ ZSH_TMUX_FIXTERM=true
 plugins=(tmux git virtualenv zsh-syntax-highlighting zsh-autosuggestions rvm virtualenvwrapper)
 
 # User configuration
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
-
 source $ZSH/oh-my-zsh.sh
 
 if [ -d "/opt/metasploit-framework/bin" ]; then
