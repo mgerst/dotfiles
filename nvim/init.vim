@@ -357,6 +357,12 @@ augroup ft_makefile
     autocmd FileType make :setlocal noexpandtab
 augroup END
 " }}}
+" Nomad {{{
+augroup ft_nomad
+    au!
+    autocmd FileType hcl :setlocal tabstop=2 shiftwidth=2
+augroup END
+" }}}
 " Vim {{{
 augroup ft_vim
     au!
