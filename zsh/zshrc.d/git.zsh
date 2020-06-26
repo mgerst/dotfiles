@@ -4,3 +4,4 @@ function gbranchclean() {
         git branch -D $branch
     done
 }
+alias gbclean=gbranchclean
