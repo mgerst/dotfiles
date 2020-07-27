@@ -26,6 +26,13 @@ function oms() {
     fi
 }
 
+function omf() {
+    if [ -S .overmind.sock ]; then
+        rm .overmind.sock
+    fi
+    oms
+}
+
 function knit() {
     if [ -f Gemfile ]; then
         bundle
