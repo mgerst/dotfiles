@@ -5,3 +5,6 @@ function gbranchclean() {
     done
 }
 alias gbclean=gbranchclean
+
+# Because this is a terrible idea
+unalias gstc
