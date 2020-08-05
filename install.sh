@@ -70,13 +70,6 @@ else
     echo "[WRN] Could not find nvim, skipping"
 fi
 
-# Awesome Configuration
-if check_executable awesome; then
-    check_link awesome .config/awesome
-else
-    echo "[WRN] Could not find awesomewm, skipping"
-fi
-
 # Git Template
 if check_executable git; then
     check_link git_template .git_template
