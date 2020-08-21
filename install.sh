@@ -47,6 +47,9 @@ else
     echo "[ERR] Could not find vim. What is wrong with you."
 fi
 
+# IdeaVIM configuration
+check_link ideavim/ideavimrc .ideavim
+
 # TMUX Configuration
 if check_executable tmux; then
     check_link tmux/tmux.conf .tmux.conf
