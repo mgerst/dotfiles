@@ -13,5 +13,8 @@ if [ -d $HOME/Library/Python/3.8/bin ]; then
 fi
 
 alias https='http --default-scheme=https'
-alias python='/usr/local/bin/python3'
-alias python3='/usr/local/bin/python3'
+
+if [[ $(uname) == "Darwin" ]]; then
+    alias python='/usr/local/bin/python3'
+    alias python3='/usr/local/bin/python3'
+fi
