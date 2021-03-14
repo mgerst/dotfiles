@@ -351,6 +351,12 @@ augroup ft_js
     autocmd FileType javascript,vue :call NeomakeESlintChecker()
 augroup END
 " }}}
+" LaTeX {{{
+augroup ft_tex
+    au!
+    autocmd FileType tex :set conceallevel=0
+augroup END
+" }}}
 " Makefile {{{
 augroup ft_makefile
     au!

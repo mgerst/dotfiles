@@ -47,3 +47,5 @@ fi
 if capability touchpad; then
     synclient TapButton3=2 TapButton2=3 TapButton1=0
 fi
+
+alias ip='ip -c=auto'
