@@ -68,6 +68,8 @@ if check_executable nvim; then
         sh /tmp/dein_installer.sh $HOME/.local/share/dein
         rm /tmp/dein_installer.sh
         nvim +"call dein#install()" +qall
+    else
+        nvim +"call dein#update()" +qall
     fi
 else
     echo "[WRN] Could not find nvim, skipping"
