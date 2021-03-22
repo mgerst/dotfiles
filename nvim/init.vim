@@ -46,15 +46,6 @@ call dein#add('w0rp/ale')
 
 call dein#add('kshenoy/vim-signature')
 
-" Autocomplete
-" call dein#add('Shougo/deoplete.nvim')
-" call dein#add('Shougo/neco-vim')
-" call dein#add('zchee/deoplete-jedi')
-" call dein#add('zchee/deoplete-go')
-" call dein#add('zchee/deoplete-clang')
-" call dein#add('carlitux/deoplete-ternjs')
-" call dein#add('mhartington/deoplete-typescript')
-
 " Language Server Stuff
 call dein#add('neoclide/coc.nvim', {
     \ 'build': 'yarn'
@@ -64,6 +55,17 @@ call dein#add('autozimu/LanguageClient-neovim', {
     \ 'build': 'bash install.sh',
     \ })
 call dein#add('Shougo/echodoc.vim')
+
+" COC
+call dein#add('neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('neoclide/coc-solargraph')
 
 " Fuzzy Finder
 call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'build': './install --all', 'merged': 0 })
@@ -401,6 +403,73 @@ let g:airline#extensions#tabline#enabled = 1
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+" }}}
+" CoC {{{
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+inoremap <expr> <TAB> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<TAB>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" show documentation
+function! s:show_documentation()
+    if (index(['vim', 'help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" show error, otherwise documentation, on hold
+" function! ShowDocIfNoDiagnostic(timer_id)
+"   if (coc#util#has_float() == 0)
+"     silent call CocActionAsync('doHover')
+"   endif
+" endfunction
+" function! s:show_hover_doc()
+"     call timer_start(200, 'ShowDocIfNoDiagnostic')
+" endfunction
+" autocmd CursorHoldI * :call <SID>show_hover_doc()
+" autocmd CursorHold * :call <SID>show_hover_doc()
+
+" common editor actions
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+
+augroup cocgroup
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript.json setl formatexpr=CocAction('formatSelected')
+
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Fix autofix problem of current line
+nmap <leader>qf <Plug>(coc-fix-current)
+" }}}
+" DelimitMate {{{
+let delimitMate_expand_cr = 2
 " }}}
 " Deoplete {{{
 let g:deoplete#enable_at_startup = 1
