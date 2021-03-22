@@ -8,3 +8,5 @@ alias gbclean=gbranchclean
 
 # Because this is a terrible idea
 unalias gstc
+
+alias lg=lazygit

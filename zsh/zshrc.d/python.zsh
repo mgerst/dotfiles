@@ -8,8 +8,8 @@ if [ -d $HOME/.pyenv ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-if [ -d $HOME/Library/Python/3.8/bin ]; then
-    export PATH="$PATH:$HOME/Library/Python/3.8/bin"
+if [ -d $HOME/Library/Python/3.9/bin ]; then
+    export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 fi
 
 alias https='http --default-scheme=https'
