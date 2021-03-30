@@ -64,6 +64,7 @@ call dein#add('neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'})
 call dein#add('neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'})
 call dein#add('neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'})
 call dein#add('neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'})
+call dein#add('elixir-lsp/coc-elixir', {'do': 'yarn install --frozen-lockfile'})
 call dein#add('fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'})
 call dein#add('neoclide/coc-solargraph')
 
@@ -413,11 +414,19 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
+" Use tab to trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <c-space> to trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-inoremap <expr> <TAB> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<TAB>"
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugins
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -466,27 +475,10 @@ augroup cocgroup
 augroup end
 
 " Fix autofix problem of current line
-nmap <leader>qf <Plug>(coc-fix-current)
+nmap <leader>gf <Plug>(coc-fix-current)
 " }}}
 " DelimitMate {{{
-let delimitMate_expand_cr = 2
-" }}}
-" Deoplete {{{
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-autocmd! InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"
-" let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
-" let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8.1/include/'
-"
-" call deoplete#custom#source('LanguageClient',
-"             \ 'min_pattern_length',
-"             \ 2)
+let delimitMate_expand_cr = 1
 " }}}
 " Devicons & NERDTree syntax {{{
 let g:webdevicons_enable_nerdtree = 1
