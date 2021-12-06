@@ -19,6 +19,10 @@ alias rta="rails test test:system"
 alias rs="rspec"
 
 function oms() {
+    if [ "$1" = "-f" ]; then
+        rm -f .overmind.sock
+    fi
+
     if [ -f Procfile.dev ]; then
         overmind start -f Procfile.dev
     else
