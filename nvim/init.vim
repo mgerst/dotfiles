@@ -48,7 +48,8 @@ call dein#add('kshenoy/vim-signature')
 
 " Language Server Stuff
 call dein#add('neoclide/coc.nvim', {
-    \ 'build': 'yarn'
+    \ 'merged': 0,
+    \ 'rev': 'release'
     \})
 call dein#add('autozimu/LanguageClient-neovim', {
     \ 'rev': 'next',
@@ -447,6 +448,12 @@ function! s:show_documentation()
     endif
 endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+let g:coc_global_extensions = [
+        \ "coc-css", "coc-elixir", "coc-eslint", "coc-highlight",
+        \ "coc-html", "coc-json", "coc-rust-analyzer",
+        \ "coc-solargraph", "coc-tsserver", "coc-yaml"
+      \ ]
 
 " show error, otherwise documentation, on hold
 " function! ShowDocIfNoDiagnostic(timer_id)

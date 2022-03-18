@@ -61,6 +61,7 @@ fi
 if check_executable nvim; then
     check_directory .config/nvim
     check_link nvim/init.vim .config/nvim/init.vim
+    check_link nvim/coc-settings.json .config/nvim/coc-settings.json
 
     # Setup dein
     if [ ! -d $HOME/.local/share/dein ]; then

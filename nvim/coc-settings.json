@@ -1,0 +1,20 @@
+{
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod"],
+            "disabledWorkspaceFolders": true,
+            "filetypes": ["go"]
+        },
+        "crystal": {
+            "command": "crystalline",
+            "args": [
+                "--stdio"
+            ],
+            "filetypes": [
+                "crystal"
+            ]
+        }
+    },
+    "coc.preferences.formatOnSaveFiletypes": ["rust"]
+}
