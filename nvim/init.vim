@@ -208,6 +208,7 @@ nnoremap <leader>) :tabnext<cr>
 " Buffers
 nnoremap <leader>< :bprev<cr>
 nnoremap <leader>> :bnext<cr>
+nnoremap <leader>b :Buffers<cr>
 
 " sudo to write
 cnoremap w!! w !sudo tee % > /dev/null
@@ -505,9 +506,11 @@ let g:EasyMotion_startofline = 0
 " }}}
 " FZF {{{
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-map <c-p> :FZF<cr>
-tmap <c-p> <c-\><c-n>:FZF<cr>
+map <c-p> :Files<cr>
+tmap <c-p> <c-\><c-n>:Files<cr>
 map <leader>l :Lines<cr>
+map <leader>; :Files<cr>
+map <leader>m :Buffers<cr>
 " }}}
 " Indentline {{{
 let g:indentLine_char = '│'
