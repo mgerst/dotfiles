@@ -53,6 +53,8 @@ ZSH_TMUX_FIXTERM=true
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(tmux git virtualenv zsh-syntax-highlighting zsh-autosuggestions rvm virtualenvwrapper)
 
+unsetopt nomatch
+
 # User configuration
 source $ZSH/oh-my-zsh.sh
 
