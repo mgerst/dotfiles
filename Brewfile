@@ -1,0 +1,13 @@
+brew "neovim"
+brew "fzf"
+brew "awscli"
+brew "mitmproxy"
+brew "wget"
+brew "overmind"
+brew "python"
+brew "jq"
+brew "the_silver_searcher"
+
+cask "chromedriver"
+cask "postman"
+cask "aws-vault"

@@ -9,7 +9,7 @@ if [ -d $HOME/.pyenv ]; then
 fi
 
 if [ -d $HOME/Library/Python/3.9/bin ]; then
-    export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+    export PATH="$PATH:$HOME/Library/Python/3.10/bin"
 fi
 
 alias https='http --default-scheme=https'
