@@ -16,5 +16,6 @@
             ]
         }
     },
-    "coc.preferences.formatOnSaveFiletypes": ["rust"]
+    "coc.preferences.formatOnSaveFiletypes": ["rust"],
+    "rust-analyzer.inlayHints.enable": true
 }
