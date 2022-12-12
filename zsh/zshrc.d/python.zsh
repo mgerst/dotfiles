@@ -3,9 +3,9 @@ if [[ -n "$VIRTUAL_ENV" ]]; then
 fi
 
 if [ -d $HOME/.pyenv ]; then
-    export PATH="$HOME/.pyenv/bin:$PATH"
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
 fi
 
 if [ -d $HOME/Library/Python/3.9/bin ]; then
