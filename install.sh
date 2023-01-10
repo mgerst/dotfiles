@@ -64,6 +64,10 @@ if check_executable nvim; then
         rm -rf .config/nvim
     fi
 
+    if [ ! -f .local/share/nvim/site/packer/packer/start/packer.nvim ]; then
+        git clone --depth 1 https://github.com/wbthomason/packer.nvim .local/share/nvim/site/pack/packer/start/packer.nvim
+    fi
+
     check_directory .config/nvim
     check_link nvim .config/nvim
 
