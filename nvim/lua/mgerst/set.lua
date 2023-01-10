@@ -35,4 +35,8 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.ttimeoutlen = 30
 
-vim.opt.wildignore = {".o", "*.pyc", "__pycache__", "node_modules/**/*"}
+vim.opt.wildignore = { ".o", "*.pyc", "__pycache__", "node_modules/**/*" }
+
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true

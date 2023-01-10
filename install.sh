@@ -59,6 +59,11 @@ fi
 
 # NVIM Configuration
 if check_executable nvim; then
+    # Remove old nvim config
+    if [ -f .config/nvim/init.vim ]; then
+        rm -rf .config/nvim
+    fi
+
     check_directory .config/nvim
     check_link nvim .config/nvim
 
