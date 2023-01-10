@@ -1,0 +1,7 @@
+require("mgerst.packer")
+require("mgerst.remap")
+require("mgerst.set")
+require("mgerst.autocmd")
+require("mgerst.folding")
+require("mgerst.movement")
+require("mgerst.files")

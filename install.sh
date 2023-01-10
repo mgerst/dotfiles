@@ -60,18 +60,9 @@ fi
 # NVIM Configuration
 if check_executable nvim; then
     check_directory .config/nvim
-    check_link nvim/init.vim .config/nvim/init.vim
-    check_link nvim/coc-settings.json .config/nvim/coc-settings.json
+    check_link nvim .config/nvim
 
-    # Setup dein
-    if [ ! -d $HOME/.local/share/dein ]; then
-        curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/dein_installer.sh
-        sh /tmp/dein_installer.sh $HOME/.local/share/dein
-        rm /tmp/dein_installer.sh
-        nvim +"call dein#install()" +qall
-    else
-        nvim +"call dein#update()" +qall
-    fi
+    nvim +":PackerSync"
 else
     echo "[WRN] Could not find nvim, skipping"
 fi

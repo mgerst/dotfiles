@@ -3,7 +3,7 @@
         "golang": {
             "command": "gopls",
             "rootPatterns": ["go.mod"],
-            "disableWorkspaceFolders": true,
+            "disabledWorkspaceFolders": true,
             "filetypes": ["go"]
         },
         "crystal": {
@@ -16,6 +16,5 @@
             ]
         }
     },
-    "coc.preferences.formatOnSaveFiletypes": ["rust"],
-    "rust-analyzer.inlayHints.enable": true
+    "coc.preferences.formatOnSaveFiletypes": ["rust"]
 }
