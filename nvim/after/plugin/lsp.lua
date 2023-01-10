@@ -12,7 +12,6 @@ lsp.ensure_installed({
 lsp.on_attach(function(client, bufnr)
   -- local opts = { buffer = bufnr, remap = false }
 
-  client.server_capabilities.documentFormattingProvider = true
   if client.server_capabilities.documentFormattingProvider then
     local au_lsp = vim.api.nvim_create_augroup('lsp_format', { clear = true })
     vim.api.nvim_create_autocmd('BufWritePre', {

@@ -49,7 +49,6 @@ fi
 
 # IdeaVIM configuration
 check_link ideavim/ideavimrc .ideavim
-
 # TMUX Configuration
 if check_executable tmux; then
     check_link tmux/tmux.conf .tmux.conf
@@ -60,18 +59,18 @@ fi
 # NVIM Configuration
 if check_executable nvim; then
     # Remove old nvim config
-    if [ -f .config/nvim/init.vim ]; then
-        rm -rf .config/nvim
+    if [ -f $HOME/.config/nvim/init.vim ]; then
+        rm -rf $HOME/.config/nvim
     fi
 
-    if [ ! -f .local/share/nvim/site/packer/packer/start/packer.nvim ]; then
-        git clone --depth 1 https://github.com/wbthomason/packer.nvim .local/share/nvim/site/pack/packer/start/packer.nvim
+    if [ ! -f $HOME/.local/share/nvim/site/packer/packer/start/packer.nvim ]; then
+        git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
     fi
 
     check_directory .config/nvim
     check_link nvim .config/nvim
 
-    nvim +":PackerSync"
+    nvim +PackerSync
 else
     echo "[WRN] Could not find nvim, skipping"
 fi
