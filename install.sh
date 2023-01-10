@@ -59,7 +59,7 @@ fi
 # NVIM Configuration
 if check_executable nvim; then
     # Remove old nvim config
-    if [ -e $HOME/.config/nvim/init.vim ]; then
+    if [ -L $HOME/.config/nvim/init.vim ]; then
         rm -rf $HOME/.config/nvim
     fi
 
