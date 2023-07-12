@@ -23,6 +23,9 @@ function check_executable() {
     command -v "$@" >/dev/null 2>&1
 }
 
+# Various Config Files
+check_link asdfrc .asdfrc
+
 # ZSH Configuration
 if check_executable zsh; then
     check_link zsh/zshrc .zshrc
