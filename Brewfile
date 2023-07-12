@@ -9,6 +9,7 @@ brew "jq"
 brew "the_silver_searcher"
 brew "docker"
 brew "wireshark"
+brew "asdf"
 
 cask "chromedriver"
 cask "postman"
