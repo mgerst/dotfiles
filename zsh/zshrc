@@ -55,13 +55,13 @@ plugins=(tmux git virtualenv zsh-syntax-highlighting zsh-autosuggestions rvm vir
 
 unsetopt nomatch
 
-# User configuration
-source $ZSH/oh-my-zsh.sh
-
 # Configure brew if applicable
 if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# User configuration
+source $ZSH/oh-my-zsh.sh
 
 if [ -d "/opt/metasploit-framework/bin" ]; then
     export PATH="/opt/metasploit-framework/bin:$PATH"
