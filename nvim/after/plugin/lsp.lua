@@ -5,8 +5,8 @@ lsp.preset('recommended')
 lsp.ensure_installed({
   'tsserver',
   'eslint',
-  'rust_analyzer',
   'sumneko_lua',
+  'rust_analyzer'
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -34,6 +34,10 @@ rt.setup({
       vim.keymap.set('n', '<c-space>', rt.hover_actions.hover_actions, { buffer = bufnr })
       -- Code action groups
       vim.keymap.set('n', '<leader>a', rt.code_action_group.code_action_group, { buffer = bufnr })
+      print("rt-on_attach")
+
+      rt.inlay_hints.set()
+      rt.inlay_hints.enable()
     end
   }
 })
