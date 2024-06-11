@@ -1,1 +1,2 @@
-require("mgerst");
+require("user.autocommands")
+require("user.keybindings")

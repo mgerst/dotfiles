@@ -66,13 +66,17 @@ if check_executable nvim; then
         rm -rf $HOME/.config/nvim
     fi
 
-    if [ ! -d $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]; then
-        git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+    if [ -d $HOME/.local/share/nvim/site/pack/packer ]; then
+        rm -f $HOME/.local/share/nvim/site/pack/packer
     fi
 
-    check_link nvim .config/nvim
+    if [ ! -d $HOME/.config/nvim/.git ]; then
+        git clone https://github.com/pgosar/CyberNvim
+    fi
 
-    nvim +PackerSync
+    check_link nvim .config/nvim/lua/user
+
+    nvim +CyberUpdate
 else
     echo "[WRN] Could not find nvim, skipping"
 fi
