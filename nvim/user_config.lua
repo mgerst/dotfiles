@@ -15,6 +15,7 @@ M.mason_ensure_installed = {
 		"stylua",
 		"jq",
     "rust-analyzer",
+    "elixirls",
 	},
 	dap = {
 		"python",
