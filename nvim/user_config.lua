@@ -5,17 +5,28 @@ local M = {}
 -- add any null-ls sources you want here
 M.setup_sources = function(b)
 	return {
+    b.formatting.clang_format,
+    b.completion.luasnip,
+    b.completion.tags,
+    b.formatting.gofmt,
+    b.formatting.cmake_format,
+    b.diagnostics.checkmake,
+    b.diagnostics.cmake_lint,
 		b.code_actions.gitsigns,
+    b.hover.dictionary,
 	}
 end
 
 -- add mason sources to auto-install
 M.mason_ensure_installed = {
 	null_ls = {
+    "clangd",
 		"stylua",
 		"jq",
+    "lua-language-server",
     "rust-analyzer",
-    "elixirls",
+    "elixir",
+    "typescript-language-server",
 	},
 	dap = {
 		"python",
@@ -28,10 +39,23 @@ M.formatting_servers = {
 	["rust_analyzer"] = { "rust" },
 	["lua_ls"] = { "lua" },
 	["null_ls"] = {
+    "lua",
 		"javascript",
 		"javascriptreact",
 		"typescript",
 		"typescriptreact",
+    "html",
+    "css",
+    "json",
+    "python",
+    "sh",
+    "bash",
+    "zsh",
+    "go",
+    "cpp",
+    "c",
+    "cmake",
+    "markdown",
 	},
 }
 
