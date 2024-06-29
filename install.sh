@@ -71,7 +71,7 @@ if check_executable nvim; then
     fi
 
     if [ ! -d $HOME/.config/nvim/.git ]; then
-        git clone https://github.com/pgosar/CyberNvim
+        git clone https://github.com/pgosar/CyberNvim $HOME/.config/nvim
     fi
 
     check_link nvim .config/nvim/lua/user
