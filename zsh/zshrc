@@ -51,9 +51,11 @@ ZSH_TMUX_FIXTERM=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git virtualenv zsh-syntax-highlighting zsh-autosuggestions rvm virtualenvwrapper kubectl)
+plugins=(tmux git virtualenv zsh-syntax-highlighting zsh-autosuggestions rvm virtualenvwrapper kubectl kubectx)
 
 unsetopt nomatch
+
+RPS1='$(kubectx_prompt_info)'
 
 # Configure brew if applicable
 if [ -f /opt/homebrew/bin/brew ]; then
