@@ -6,7 +6,9 @@ function gbranchclean() {
 }
 alias gbclean=gbranchclean
 
-# Because this is a terrible idea
-unalias gstc
+if alias gstc >/dev/null 2>&1; then
+  # Because this is a terrible idea
+  unalias gstc
+fi
 
 alias lg=lazygit
